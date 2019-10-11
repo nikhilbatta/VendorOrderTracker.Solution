@@ -18,7 +18,7 @@ namespace VendorOrderTracker.Controllers
             return View();
         }
         [HttpPost("/vendors")]
-        public ActionResult ShowVendor(string vendorName, string vendorDescription)
+        public ActionResult ShowAllVendors(string vendorName, string vendorDescription)
         {
             Vendor newVendor = new Vendor(vendorName, vendorDescription);
             return RedirectToAction("Index");
