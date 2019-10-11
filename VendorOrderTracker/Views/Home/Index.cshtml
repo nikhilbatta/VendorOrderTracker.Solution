@@ -1,0 +1,10 @@
+@using VendorOrderTracker.Models
+
+<body>
+    <h1> All Vendors </h1>
+    @foreach(Vendor vendor in Model)
+    {
+        <li> Vendor Name : @vendor.Name</li>
+        <li> Vendor Description: @vendor.Description</li>
+    }
+</body>

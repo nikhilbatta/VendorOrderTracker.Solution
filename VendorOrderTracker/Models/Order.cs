@@ -8,6 +8,15 @@ namespace VendorOrderTracker.Models
         public string OrderTitle {get;set;}
         public string Description{get;set;}
         public string Price{get;set;}
-        public 
+        public string DateOfOrder{get;set;}
+        
+
+        public Order(string aOrderTitle, string aDescription, string aPrice, string aDateOfOrder)
+        {
+            OrderTitle = aOrderTitle;
+            Description = aDescription;
+            Price = aPrice;
+            DateOfOrder = aDateOfOrder;
+        }
     }
 }
