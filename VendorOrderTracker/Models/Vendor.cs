@@ -7,9 +7,15 @@ namespace VendorOrderTracker.Models
     {
         public string Name {get;set;}
         public string Description{get;set;}
-        public int ID{get;set;}
+        public int ID {get;set;}
+        
         private static List<Vendor> Instances = new List<Vendor>{};
-        // public List<Order> Orders {get;set;}
+        public List<Order> listOfOrders = new List<Order>{};
+       
+        public Vendor(int ID)
+        {
+            this.ID = ID;
+        }
     public Vendor(string aName, string aDescription)
     {
         Name = aName;
@@ -17,13 +23,25 @@ namespace VendorOrderTracker.Models
         ID = Instances.Count + 1;
         Instances.Add(this);
     }
+
+  
+
+  
     public static List<Vendor> GetAll()
     {
         return Instances;
     }
     public static Vendor FindByID(int ID)
     {
-        return Instances[ID];
+        foreach(Vendor customer in Instances)
+        {
+            if(ID == customer.ID)
+            {
+                return customer;
+            }
+        }
+        return null;
+       
     }
     }
 }
