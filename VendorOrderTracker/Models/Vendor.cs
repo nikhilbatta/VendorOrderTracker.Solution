@@ -7,24 +7,23 @@ namespace VendorOrderTracker.Models
     {
         public string Name {get;set;}
         public string Description{get;set;}
-        public static List<Vendor> Instances = new List<Vendor>{};
+        public int ID{get;set;}
+        private static List<Vendor> Instances = new List<Vendor>{};
         // public List<Order> Orders {get;set;}
-    // public Vendor(string aName, string aDescription,Order orderObject)
-    // {
-    //     Name = aName;
-    //     Description = aDescription;
-    //     Instances.Add(this);
-    //     Orders.Add(orderObject);
-    // }
     public Vendor(string aName, string aDescription)
     {
         Name = aName;
         Description = aDescription;
+        ID = Instances.Count + 1;
         Instances.Add(this);
     }
     public static List<Vendor> GetAll()
     {
         return Instances;
+    }
+    public static Vendor FindByID(int ID)
+    {
+        return Instances[ID];
     }
     }
 }
