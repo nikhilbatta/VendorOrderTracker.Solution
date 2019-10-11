@@ -1,0 +1,11 @@
+@using VendorOrderTracker.Models;
+@using System.IO;
+
+<body>
+    <h1> All Vendors </h1>
+    @foreach (var guy in Model)
+    {
+        <li> Name : @guy.Name</li>
+        <li> Description: @guy.Description</li>
+    }
+</body>
