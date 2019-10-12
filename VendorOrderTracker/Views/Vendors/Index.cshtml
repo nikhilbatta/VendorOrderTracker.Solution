@@ -5,7 +5,8 @@
     <h1> All Vendors </h1>
     @foreach (var guy in Model)
     {
-        <li> Name : @guy.Name</li>
+        <li>@guy.ID</li>
+        <li> <a href="/order/@guy.ID">Name : @guy.Name</a></li>
         <li> Description: @guy.Description</li>
     }
 </body>
