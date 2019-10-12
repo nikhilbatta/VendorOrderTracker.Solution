@@ -10,18 +10,20 @@ namespace VendorOrderTracker.Controllers
         public ActionResult AllOrders(int ID)
         {  
             Vendor vendorOrders = Vendor.FindByID(ID);
-            return View(vendorOrders.listOfOrders);
+            return View(vendorOrders);
         }
-        [HttpGet("/order/{ID}")]
-        public ActionResult Order()
+        [HttpGet("/order/{ID}/new")]
+        public ActionResult Order(int ID)
         {
-            return View();
+            return View(ID);
         }
-        [HttpPost("/order/new")]
-        public ActionResult OrderIntoVendor(string aOrderTitle, string aDescription, string aPrice, string aDateOfOrder)
+        [HttpPost("/vendor/{ID}/allorders")]
+        public ActionResult OrderIntoVendor(int ID,string aOrderTitle, string aDescription, string aPrice, string aDateOfOrder)
         {
             Order newOrder = new Order(aOrderTitle, aDescription, aPrice, aDateOfOrder);
-            return RedirectToAction();
+            Vendor vendorOrders = Vendor.FindByID(ID);
+            vendorOrders.listOfOrders.Add(newOrder);
+            return RedirectToAction("AllOrders");
         }
         
     }

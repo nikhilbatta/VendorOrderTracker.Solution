@@ -12,16 +12,17 @@ namespace VendorOrderTracker.Models
         private static List<Vendor> Instances = new List<Vendor>{};
         public List<Order> listOfOrders = new List<Order>{};
        
-        public Vendor(int ID)
-        {
-            this.ID = ID;
-        }
+    
     public Vendor(string aName, string aDescription)
     {
         Name = aName;
         Description = aDescription;
         ID = Instances.Count + 1;
         Instances.Add(this);
+    }
+    public  void AddOrder(Order newOrder)
+    {
+        listOfOrders.Add(newOrder);
     }
 
   

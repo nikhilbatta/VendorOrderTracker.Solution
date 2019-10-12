@@ -1,9 +1,13 @@
 @using VendorOrderTracker.Models;
 
 <body>
-    <li>Found your vendor and its Orders</li>
-    @foreach (Order item in Model)
+    <h1>Found your vendor and its Orders</h1>
+    <h1>@Model.Name</h1>
+    @foreach (Order item in @Model.listOfOrders)
     {
-        <li> item </li>
+        <li>@item.Price</li>
     }
+    <form action="/order/@Model.ID/new">
+    <button type="submit"> Add An Order</button>
+   </form>
 </body>
