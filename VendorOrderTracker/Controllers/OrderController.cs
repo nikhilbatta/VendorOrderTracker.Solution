@@ -12,7 +12,7 @@ namespace VendorOrderTracker.Controllers
             Vendor vendorOrders = Vendor.FindByID(ID);
             return View(vendorOrders);
         }
-        [HttpGet("/order/{ID}/new")]
+        [HttpGet("/vendor/{ID}/neworder")]
         public ActionResult Order(int ID)
         {
             return View(ID);
