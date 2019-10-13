@@ -22,12 +22,9 @@ namespace VendorOrderTracker.Models
     }
     public  void AddOrder(Order newOrder)
     {
+        newOrder.ID = listOfOrders.Count;
         listOfOrders.Add(newOrder);
     }
-
-  
-
-  
     public static List<Vendor> GetAll()
     {
         return Instances;
@@ -44,5 +41,17 @@ namespace VendorOrderTracker.Models
         return null;
        
     }
+     public Order FindOrderByID(int searchID)
+        {
+            foreach(Order orderItem in listOfOrders)
+            {
+                if(searchID == orderItem.ID)
+                {
+                    return orderItem;
+                }
+            }
+            return null;
+            
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace VendorOrderTracker.Models
         public string Price{get;set;}
         public string DateOfOrder{get;set;}
         
+        public int ID {get;set;}
+        
         public Order(string aOrderTitle, string aDescription, string aPrice, string aDateOfOrder)
         {
             OrderTitle = aOrderTitle;
@@ -17,5 +19,6 @@ namespace VendorOrderTracker.Models
             Price = aPrice;
             DateOfOrder = aDateOfOrder;
         }
+       
     }
 }

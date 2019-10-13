@@ -17,13 +17,27 @@ namespace VendorOrderTracker.Controllers
         {
             return View(ID);
         }
+        [HttpGet("vendor/{vendorID}/orders/{orderId}")]
+        public ActionResult SingleOrder(int vendorID, int orderID)
+        {
+            Vendor foundVendor = Vendor.FindByID(vendorID);
+            Order foundOrder = foundVendor.FindOrderByID(orderID);
+             var SingleOrderViewModel = new SingleOrderViewModel  
+            {  
+                Order = foundOrder,  
+                Customer = foundVendor  
+            };
+            return View(SingleOrderViewModel);
+
+        }
         [HttpPost("/vendor/{ID}/allorders")]
         public ActionResult OrderIntoVendor(int ID,string aOrderTitle, string aDescription, string aPrice, string aDateOfOrder)
         {
             Order newOrder = new Order(aOrderTitle, aDescription, aPrice, aDateOfOrder);
-            Vendor vendorOrders = Vendor.FindByID(ID);
-            vendorOrders.listOfOrders.Add(newOrder);
-            return RedirectToAction("AllOrders");
+            Vendor vendor = Vendor.FindByID(ID);
+            vendor.AddOrder(newOrder);
+            
+            return Redirect("/vendor/" + ID + "/orders/" + newOrder.ID);
         }
         
     }
