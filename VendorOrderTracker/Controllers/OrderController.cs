@@ -34,9 +34,10 @@ namespace VendorOrderTracker.Controllers
         [HttpPost("/vendor/{ID}/allorders")]
         public ActionResult OrderIntoVendor(Guid ID,string aOrderTitle, string aDescription, string aPrice, string aDateOfOrder)
         {
+            Console.WriteLine(ID);
+            Vendor vendorInstance = Store.Instance().FindVendorByID(ID);
             Order newOrder = new Order(aOrderTitle, aDescription, aPrice, aDateOfOrder);
-            Vendor vendor = Store.Instance().FindVendorByID(ID);
-            vendor.AddOrder(newOrder);
+            vendorInstance.AddOrder(newOrder);
             
             return Redirect("/vendor/" + ID + "/orders/" + newOrder.ID);
         }

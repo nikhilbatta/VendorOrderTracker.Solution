@@ -19,7 +19,7 @@ namespace VendorOrderTracker.Models
         listOfOrders = new List<Order>{};
         
     }
-    public  void AddOrder(Order newOrder)
+    public void AddOrder(Order newOrder)
     {
         newOrder.ID = listOfOrders.Count;
         listOfOrders.Add(newOrder);

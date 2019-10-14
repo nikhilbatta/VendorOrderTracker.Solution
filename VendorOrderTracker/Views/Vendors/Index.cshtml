@@ -4,12 +4,12 @@
 
 <body>
     <h1> All Vendors </h1>
-    @foreach (var guy in Model)
+    @foreach (Vendor vendor in Model)
     {
       
-        <li><a href="/vendor/delete/@guy.ID"> Delete Vendor</a>@guy.ID</li>
-        <li> <a href="/vendor/@guy.ID/allorders">Name : @guy.Name</a></li>
-        <li> Description: @guy.Description</li>
+        <li><a href="/vendor/delete/@vendor.ID"> Delete Vendor</a>@vendor.ID</li>
+        <li> <a href="/vendor/@vendor.ID/allorders"> Name : @vendor.Name</a></li>
+        <li> Description: @vendor.Description</li>
     }
 <a href = "/vendors"> Go to vendors </a>
 <br>
