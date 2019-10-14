@@ -1,5 +1,7 @@
 @using VendorOrderTracker.Models;
-
+@{
+  Layout = "_Layout";
+}
 <body>
     <h1>Found your vendor and its Orders</h1>
     <h1>@Model.Name</h1>
@@ -10,6 +12,5 @@
     <form action="/vendor/@Model.ID/neworder">
     <button type="submit"> Add An Order</button>
    </form>
-<a href = "/vendors"> Go to vendors </a>
-<a href = "/vendors/newvendor">Add new vendor</a>
+
 </body>

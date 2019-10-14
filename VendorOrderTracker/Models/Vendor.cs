@@ -7,40 +7,25 @@ namespace VendorOrderTracker.Models
     {
         public string Name {get;set;}
         public string Description{get;set;}
-        public int ID {get;set;}
-        
-        private static List<Vendor> Instances = new List<Vendor>{};
-        public List<Order> listOfOrders = new List<Order>{};
+        public Guid ID {get;set;}
+        public List<Order> listOfOrders;
        
     
-    public Vendor(string aName, string aDescription)
+    public Vendor(Guid ID, string aName, string aDescription)
     {
+        this.ID = ID;
         Name = aName;
         Description = aDescription;
-        ID = Instances.Count + 1;
-        Instances.Add(this);
+        listOfOrders = new List<Order>{};
+        
     }
     public  void AddOrder(Order newOrder)
     {
         newOrder.ID = listOfOrders.Count;
         listOfOrders.Add(newOrder);
     }
-    public static List<Vendor> GetAll()
-    {
-        return Instances;
-    }
-    public static Vendor FindByID(int ID)
-    {
-        foreach(Vendor customer in Instances)
-        {
-            if(ID == customer.ID)
-            {
-                return customer;
-            }
-        }
-        return null;
-       
-    }
+    
+    
      public Order FindOrderByID(int searchID)
         {
             foreach(Order orderItem in listOfOrders)

@@ -1,15 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using VendorOrderTracker.Models;
+using System;
 
 namespace VendorOrderTracker.Controllers
 {
     public class OrderController : Controller
     {
         [HttpGet("/vendor/{ID}/allorders")]
-        public ActionResult AllOrders(int ID)
+        public ActionResult AllOrders(Guid ID)
         {  
-            Vendor vendorOrders = Vendor.FindByID(ID);
+            Vendor vendorOrders = Store.Instance().FindVendorByID(ID);
             return View(vendorOrders);
         }
         [HttpGet("/vendor/{ID}/neworder")]
@@ -18,9 +19,9 @@ namespace VendorOrderTracker.Controllers
             return View(ID);
         }
         [HttpGet("vendor/{vendorID}/orders/{orderId}")]
-        public ActionResult SingleOrder(int vendorID, int orderID)
+        public ActionResult SingleOrder(Guid vendorID, int orderID)
         {
-            Vendor foundVendor = Vendor.FindByID(vendorID);
+            Vendor foundVendor = Store.Instance().FindVendorByID(vendorID);
             Order foundOrder = foundVendor.FindOrderByID(orderID);
              var SingleOrderViewModel = new SingleOrderViewModel  
             {  
@@ -31,10 +32,10 @@ namespace VendorOrderTracker.Controllers
 
         }
         [HttpPost("/vendor/{ID}/allorders")]
-        public ActionResult OrderIntoVendor(int ID,string aOrderTitle, string aDescription, string aPrice, string aDateOfOrder)
+        public ActionResult OrderIntoVendor(Guid ID,string aOrderTitle, string aDescription, string aPrice, string aDateOfOrder)
         {
             Order newOrder = new Order(aOrderTitle, aDescription, aPrice, aDateOfOrder);
-            Vendor vendor = Vendor.FindByID(ID);
+            Vendor vendor = Store.Instance().FindVendorByID(ID);
             vendor.AddOrder(newOrder);
             
             return Redirect("/vendor/" + ID + "/orders/" + newOrder.ID);
