@@ -14,11 +14,12 @@ namespace VendorOrderTracker.Controllers
             return View(vendorOrders);
         }
         [HttpGet("/vendor/{ID}/neworder")]
-        public ActionResult Order(int ID)
+        public ActionResult Order(Guid ID)
         {
+            Console.WriteLine(ID);
             return View(ID);
         }
-        [HttpGet("vendor/{vendorID}/orders/{orderId}")]
+        [HttpGet("vendor/{vendorID}/orders/{orderID}")]
         public ActionResult SingleOrder(Guid vendorID, int orderID)
         {
             Vendor foundVendor = Store.Instance().FindVendorByID(vendorID);
@@ -34,10 +35,14 @@ namespace VendorOrderTracker.Controllers
         [HttpPost("/vendor/{ID}/allorders")]
         public ActionResult OrderIntoVendor(Guid ID,string aOrderTitle, string aDescription, string aPrice, string aDateOfOrder)
         {
-            Console.WriteLine(ID);
+            
             Vendor vendorInstance = Store.Instance().FindVendorByID(ID);
+            
             Order newOrder = new Order(aOrderTitle, aDescription, aPrice, aDateOfOrder);
+            Console.WriteLine(newOrder.ID);
             vendorInstance.AddOrder(newOrder);
+            
+            
             
             return Redirect("/vendor/" + ID + "/orders/" + newOrder.ID);
         }
