@@ -21,8 +21,6 @@ _Specs_
 
 * _Git Clone from https://github.com/nikhilbatta/VendorOrderTracker.Solution
 * _Make sure you have .Net installed_
-* _Install MySql Server and MySql WorkBench
-* _Open terminal and start MySql Server
 * _Open terminal, go into the main project folder and type in dotnet run_
 * _Open google chrome and enter in the specific localhost page that the terminal will lead you to._
 
