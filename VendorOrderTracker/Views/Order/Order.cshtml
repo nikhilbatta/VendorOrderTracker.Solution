@@ -1,12 +1,14 @@
-
-<form action="/vendor/@Model/allorders" method="post">
+@{
+  Layout = "_Layout";
+}
+<form action="/vendor/@Model/allorders" method="post" class="form-group">
 <label for ="aOrderTitle"> Order Title: </label>
-<input type="text" name="aOrderTitle">
+<input type="text" name="aOrderTitle" class="form-control">
 <label for ="aDescription"> Description: </label>
-<input type="text" name= "aDescription">
+<input type="text" name= "aDescription" class="form-control">
 <label for ="aPrice"> Price: </label>
-<input type="text" name= "aPrice">
+<input type="text" name= "aPrice" class="form-control">
 <label for ="aDateOfOrder"> Date Of Order: </label>
-<input type="text" name= "aDateOfOrder">
+<input type="text" name= "aDateOfOrder" class="form-control">
 <button type="submit">Create Order</button>
 </form>

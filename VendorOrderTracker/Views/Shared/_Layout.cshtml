@@ -2,12 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>My Super Awesome Site!</title>
+    <title>Vendor Order Tracker</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
+    <ul id="navbarlayout">
+      <li><a href = "/vendors" id="nav"> Go to All Vendors </a></li>
+      <li><a href = "/vendors/newvendor" id="nav">Add new vendor</a></li>
+    </ul>
     @RenderBody()
-    @Html.Partial("Footer")
   </body>
 </html>

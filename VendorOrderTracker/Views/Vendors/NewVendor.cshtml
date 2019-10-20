@@ -1,7 +1,14 @@
-<form action="/vendors" method="post">
+
+@{
+  Layout = "_Layout";
+}
+
+<body>
+<form action="/vendors" method="post" class="form-group">
 <label for="vendorName"> Vendor Name: </label>
-<input type="text" name="vendorName">
+<input type="text" name="vendorName" class="form-control">
 <label for="vendorDescription"> Vendor Description: </label>
-<input type="text" name= "vendorDescription">
-<button type="submit">Create Vendor</button>
+<input type="text" name= "vendorDescription" class="form-control">
+<button type="submit" class="btn btn-default">Create Vendor</button>
 </form>
+</body>
